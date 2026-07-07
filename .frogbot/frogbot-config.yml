@@ -17,6 +17,6 @@
       minSeverity: High
 
       projects:
-        - installCommand: dotnet restore InviterService/InviterService.slnx
-          workingDirs:
-            - "."
+        - workingDirs:
+            - InviterService
+          installCommand: dotnet restore InviterService.slnx
