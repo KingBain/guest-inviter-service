@@ -46,7 +46,7 @@ jobs:
           jf rt ping
 
       - name: Run Frogbot
-        uses: jfrog/frogbot@v2.29.3
+        uses: jfrog/frogbot@v2.35.0
         env:
           JF_ACCESS_TOKEN: ${{ steps.setup-jfrog-cli.outputs.oidc-token }}
           JF_USER: ${{ steps.setup-jfrog-cli.outputs.oidc-user }}
