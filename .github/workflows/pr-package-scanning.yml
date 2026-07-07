@@ -18,6 +18,7 @@ permissions:
 
 env:
   JF_URL: https://artifacts-artefacts.devops.cloud-nuage.canada.ca
+  JF_PROJECT: ssc-fsdh
 
 jobs:
   scan-pull-request:
