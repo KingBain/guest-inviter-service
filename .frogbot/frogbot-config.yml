@@ -19,4 +19,4 @@
       projects:
         - workingDirs:
             - "."
-          installCommand: "dotnet restore InviterService/InviterService.csproj"
+          installCommand: "dotnet restore guest-inviter-service.sln"
