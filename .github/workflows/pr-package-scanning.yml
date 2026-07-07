@@ -26,7 +26,7 @@ jobs:
 
     steps:
       - name: Run Frogbot
-        uses: jfrog/frogbot@3a1daa5a4f0a785b3ab48c5fdb6320b8d7d877cb # v2.32.2
+        uses: jfrog/frogbot@b6f3bb75e8bcb4bc5b2b3f7122aa6bf37a16faac # v3.3.0
         with:
           oidc-provider-name: github-oidc
         env:
