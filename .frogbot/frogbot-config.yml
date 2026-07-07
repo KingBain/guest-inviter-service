@@ -18,5 +18,5 @@
 
       projects:
         - workingDirs:
-            - InviterService
-          installCommand: dotnet restore InviterService.csproj
+            - "."
+          installCommand: "dotnet restore InviterService/InviterService.csproj"
