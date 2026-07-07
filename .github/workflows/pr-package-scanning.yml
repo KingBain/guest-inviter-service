@@ -26,11 +26,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Run Frogbot
-        uses: jfrog/frogbot@b6f3bb75e8bcb4bc5b2b3f7122aa6bf37a16faac # v3.3.0
+      - name: Setup JFrog CLI with OIDC
+        id: setup-jfrog-cli
+        uses: jfrog/setup-jfrog-cli@1641575d87647fb969c0545f0b6a76873e328b7c # v5.0.0
+        env:
+          JFROG_CLI_AVOID_NEW_VERSION_WARNING: "true"
         with:
           oidc-provider-name: github-oidc
+          version: 2.91.0
+
+      - name: Verify JFrog authentication
+        shell: bash
         env:
+          JF_ACCESS_TOKEN: ${{ steps.setup-jfrog-cli.outputs.oidc-token }}
+        run: |
+          set -euo pipefail
+
+          echo "Checking JFrog CLI authentication..."
+          jf rt ping
+
+      - name: Run Frogbot
+        uses: jfrog/frogbot@b6f3bb75e8bcb4bc5b2b3f7122aa6bf37a16faac # v3.3.0
+        env:
+          JF_ACCESS_TOKEN: ${{ steps.setup-jfrog-cli.outputs.oidc-token }}
+          JF_USER: ${{ steps.setup-jfrog-cli.outputs.oidc-user }}
+
           JF_GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           JF_GIT_PROVIDER: github
           JF_GIT_API_ENDPOINT: https://api.github.com
